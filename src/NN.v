@@ -2328,7 +2328,7 @@ always@(*)begin
 end
 
 ///======================================///
-// Merge adder Stage2 Pipeline insertion 
+// Merge Adder
 ///======================================///
 
 //uproad
@@ -2337,18 +2337,12 @@ reg [23:0] merge_adder_G;
 reg [23:0] merge_adder_B;
 
 
-always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)begin
-        merge_adder_R <= 'd0;
-        merge_adder_G <= 'd0;
-        merge_adder_B <= 'd0;
-    end
-    else begin
-        merge_adder_R <= add_aft_relu_uproad_R + add_aft_relu_downroad_R;
-        merge_adder_G <= add_aft_relu_uproad_G + add_aft_relu_downroad_G;
-        merge_adder_B <= add_aft_relu_uproad_B + add_aft_relu_downroad_B;
-    end
+always@(*)begin
+    merge_adder_R = add_aft_relu_uproad_R + add_aft_relu_downroad_R;
+    merge_adder_G = add_aft_relu_uproad_G + add_aft_relu_downroad_G;
+    merge_adder_B = add_aft_relu_uproad_B + add_aft_relu_downroad_B;
 end
+
 
 ///======================================///
 // judger 
