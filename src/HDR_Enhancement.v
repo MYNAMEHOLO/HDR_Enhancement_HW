@@ -49,7 +49,6 @@ module HDR_Enhancement(
 );
 
 // wire define
-
 // class
 wire [ (`Class_result_bit - 1): 0] class_w;
 
